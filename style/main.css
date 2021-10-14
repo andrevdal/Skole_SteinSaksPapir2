@@ -59,9 +59,20 @@ body{
 }
 .playButton{
 }
-.button :hover{
+.button:hover{
     cursor: pointer;
 }
 .button{
     border: black 1px solid;
+}
+.result{
+    display: block !important;
+    font-size: 200%;
+}
+.remove{
+    visibility: hidden;
+}
+.players{
+    font-size: 200%;
+    padding: 3%;
 }

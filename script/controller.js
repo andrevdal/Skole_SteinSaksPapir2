@@ -20,12 +20,16 @@ export class Game {
     return;
   }
 
+  onFinish() {
+    return
+  }
+
   constructor() {
     this.startTimer();
   }
 
   startTimer() {
-    this.timer = 3;
+    this.timer = 4;
     if (this.timerID) {
       this.stopTimer();
     }
@@ -87,7 +91,7 @@ export class Game {
       this.rounds++;
     } else {
       if (this.calculatorResult == 1) {
-        this.onRound("draw");
+        this.onRound("(draw)");
       } else if (
         this.calculatorResult == 0.5 ||
         this.calculatorResult == 1.5 ||
@@ -95,7 +99,7 @@ export class Game {
       ) {
         this.hScore++;
         this.rounds++;
-		this.onRound("win");
+		this.onRound("(win)");
       } else if (
         this.calculatorResult == 0.6666666666666666 ||
         this.calculatorResult == 0.75 ||
@@ -103,12 +107,16 @@ export class Game {
       ) {
         this.bScore++;
         this.rounds++;
-		this.onRound("lost");
+		this.onRound("(lost)");
       }
     }
     if (this.bScore >= this.roundsLimit || this.hScore >= this.roundsLimit) {
       this.stopTimer()
-    } else this.startTimer();
+      this.onFinish()
+    } else {
+      //this.stopTimer();
+      setTimeout(() => this.startTimer(), 1000);
+    }
     return [this.hScore, this.bScore];
   }
 }

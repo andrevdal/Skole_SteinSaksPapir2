@@ -57,8 +57,6 @@ body{
 .choices{
     margin-top: 2%;
 }
-.playButton{
-}
 .button:hover{
     cursor: pointer;
 }

@@ -2,7 +2,7 @@ export class Game {
   rock = 2;
   paper = 3;
   scissors = 4;
-  hChooser = null;
+  hChoice = null
   bChoice = null;
   calculatorResult = NaN;
   timer = 3;
@@ -27,7 +27,17 @@ export class Game {
   constructor() {
     this.startTimer();
   }
-
+  /**
+   *
+   * @param {number} human
+   * @param {number} bot
+   * @returns {number}
+   */
+  calculator(human, bot) {
+    this.calculatorResult = human / bot;
+    console.log(bot, human);
+    return this.calculatorResult;
+  }
   startTimer() {
     this.timer = 4;
     if (this.timerID) {
@@ -36,7 +46,10 @@ export class Game {
     this.timerID = setInterval(() => {
       this.timer--;
       this.onTimerChange(this.timer);
-      if (this.timer == 0) this.stopTimer();
+      if (this.timer == 0) {
+        this.stopTimer()
+        this.battleCheck()
+      }
     }, 1000);
   }
 
@@ -69,52 +82,49 @@ export class Game {
         return this.scissors;
     }
   }
-
-  /**
-   *
-   * @param {number} human
-   * @param {number} bot
-   * @returns {number}
-   */
-  calculator(human, bot) {
-    this.calculatorResult = human / bot;
-    console.log(bot, human);
-    return this.calculatorResult;
-  }
   /**
    * Check with the provided variables
    * @returns {[number, number]} humanScore, botScore
    */
   battleCheck() {
-    if (this.timer == 0 || this.timer > 1) {
+    if (this.timer == 0) {
       this.bScore++;
       this.rounds++;
+      this.onRound("(lost)");
     } else {
-      if (this.calculatorResult == 1) {
-        this.onRound("(draw)");
-      } else if (
-        this.calculatorResult == 0.5 ||
-        this.calculatorResult == 1.5 ||
-        this.calculatorResult == 1.3333333333333333
-      ) {
-        this.hScore++;
-        this.rounds++;
-		this.onRound("(win)");
-      } else if (
-        this.calculatorResult == 0.6666666666666666 ||
-        this.calculatorResult == 0.75 ||
-        this.calculatorResult == 2
-      ) {
+      if (this.timer > 1) {
+        if (this.hChoice == 2) this.bChoice = 3;
+        if (this.hChoice == 3) this.bChoice = 4;
+        if (this.hChoice == 4) this.bChoice = 2;
         this.bScore++;
         this.rounds++;
-		this.onRound("(lost)");
-      }
+        this.onRound("(lost)");
+      } else
+        if (this.calculatorResult == 1) {
+          this.onRound("(draw)");
+        } else if (
+          this.calculatorResult == 0.5 ||
+          this.calculatorResult == 1.5 ||
+          this.calculatorResult == 1.3333333333333333
+        ) {
+          this.hScore++;
+          this.rounds++;
+          this.onRound("(win)");
+        } else if (
+          this.calculatorResult == 0.6666666666666666 ||
+          this.calculatorResult == 0.75 ||
+          this.calculatorResult == 2
+        ) {
+          this.bScore++;
+          this.rounds++;
+          this.onRound("(lost)");
+        }
     }
     if (this.bScore >= this.roundsLimit || this.hScore >= this.roundsLimit) {
       this.stopTimer()
       this.onFinish()
     } else {
-      //this.stopTimer();
+      this.stopTimer()
       setTimeout(() => this.startTimer(), 1000);
     }
     return [this.hScore, this.bScore];

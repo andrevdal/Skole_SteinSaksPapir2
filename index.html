@@ -1,0 +1,36 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/main.css" />
+  </head>
+  <body>
+    <div class="text">
+    <h1>Rock Paper Scissors</h1>
+    <p>
+      Chose one of three options before the time runs out, but not too fast
+      either. Make your selection in the space of one second to have a chance of
+      winning. Rock beats Csissors, Csissors beat paper and paper beats rock.
+    </p>
+    <p class="playButton button" id="playButton">Play</p>
+    </div>
+    <div class="gameView">
+      <p class="result" id="result"></p>
+      <p class="HScore" id="HScore">0</p>
+      <p class="BScore" id="BScore">0</p>
+      <div class="hands">
+          <img class="HHand" src="src/2.png" alt="" />
+          <img class="BHand" src="src/2.png" alt="" />
+      </div>
+      <p class="timer" id="timer">3</p>
+      <div id="choices" class="choices">
+        <p>Rock</p>
+        <p>Paper</p>
+        <p>Scissors</p>
+      </div>
+    </div>
+    <script src="script/view.js" type="module"></script>
+  </body>
+</html>

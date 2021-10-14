@@ -1,0 +1,67 @@
+body{
+    font-family: monospace;
+}
+.text{
+    text-align: center;
+    width: 50%;
+    margin: auto;
+    font-size: 200%;
+}
+.text h1, .text p{
+    margin-bottom: 5%;
+}
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+.gameView img{
+    width: 20%;    
+}
+.BHand{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);  
+}
+.hands{
+    text-align: center;
+}
+.gameView{
+    text-align: center;
+}
+.gameView p{
+    display: inline;
+}
+.HScore{
+    margin-right: 25%;
+    font-size: 300%;
+}
+.BScore{
+    margin-left: 25%;
+    font-size: 300%;
+}
+.timer{
+    font-size: 200%;
+}
+.choices p{
+    border: black 1px solid;
+    padding: 0.3%;
+    margin-left: 2%;
+    font-size: 200%;
+}
+.choices{
+    margin-top: 2%;
+}
+.playButton{
+}
+.button :hover{
+    cursor: pointer;
+}
+.button{
+    border: black 1px solid;
+}

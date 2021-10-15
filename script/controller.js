@@ -21,7 +21,7 @@ export class Game {
   }
 
   onFinish() {
-    return
+    return;
   }
 
   constructor() {

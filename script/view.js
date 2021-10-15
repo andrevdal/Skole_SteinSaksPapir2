@@ -25,12 +25,12 @@ playButtonEl.addEventListener("click", () => {
     hScoreEl.innerText = game.hScore;
     bScoreEl.innerText = game.bScore;
     resultEl.innerText = feedback;
+    resultEl.classList.remove("red", "green", "black", "remove")
     if (feedback == "(lost)") resultEl.classList.add("red");
     if (feedback == "(win)") resultEl.classList.add("green");
     if (feedback == "(draw)") resultEl.classList.add("black");
     resultEl.classList.remove("remove")
   };
-  game.noHand = () => hHandEl.classList.add("remove")
   game.onFinish = () => {
     timer.classList.add("remove")
     playButtonEl.classList.remove("remove");

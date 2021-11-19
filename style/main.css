@@ -74,3 +74,9 @@ body{
     font-size: 200%;
     padding: 3%;
 }
+.smile{
+    position: absolute;
+    height: 50px;
+    -webkit-animation:spin 4s linear infinite;
+}
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
